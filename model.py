@@ -34,7 +34,7 @@ class AnkaModel:
         self.model = LanguageGenerationModel(*args, **kwargs)
         self.output = ''
 
-    def run_model(self, prompt: str, **kwargs: Any) -> None:
+    def run_model(self, prompt: str, **kwargs: Any) -> str:
         output = self.model.generate(prompt, args=kwargs)[0]
         puncts = ',.!?…»'
         continuation = re.sub(
@@ -52,6 +52,8 @@ class AnkaModel:
         for ch in puncts:
             output = output.replace(f' {ch} ', f'{ch} ')
         self.output = output
+
+        return output
 
     def get_last_output(self) -> str:
         return self.output

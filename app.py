@@ -1,5 +1,3 @@
-import logging
-
 import streamlit as st
 
 
@@ -16,6 +14,8 @@ from model import (
     DEFAULT_MAX_LEN, HEIGHT, MAX_CHARS, MAX_LEN, MIN_LEN, MODEL,
 )
 from utils import set_background
+
+import logging
 
 
 set_background(
@@ -51,13 +51,12 @@ MODEL.clear_output()
 if button:
     try:
         if prompt:
-            MODEL.run_model(
+            output = MODEL.run_model(
                 prompt,
                 max_length=max_length,
             )
-
-            output = MODEL.get_last_output()
-            logging.info(f'Output: {output}')
+            logger = logging.getLogger(st.__name__)
+            logger.info(f'Output: {output}')
     except Exception as err:
         st.exception(
             'OMG WHAT THE HELL IS GOING ON HERE '
