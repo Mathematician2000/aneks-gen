@@ -73,10 +73,10 @@ def load_model(**kwargs: Any) -> AnkaModel:
             ya = YaDisk(token=os.environ.get('YADISK_OAUTH_TOKEN'))
             if not ya.check_token():
                 raise ValueError('Token check failed')
-            for file in ya.listdir(f'/yaship/aneks-clf/{folder}'):
+            for file in ya.listdir(f'/yaship/aneks-gen/{folder}'):
                 filename = file.name
                 path = f'{folder}/{filename}'
-                ya.download(f'/yaship/aneks-clf/{path}', path)
+                ya.download(f'/yaship/aneks-gen/{path}', path)
 
     return AnkaModel(
         'gpt2',
