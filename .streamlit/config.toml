@@ -1,2 +1,5 @@
 [theme]
 primaryColor="black"
+
+[logger]
+level = "info"

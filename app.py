@@ -1,4 +1,7 @@
+import logging
+
 import streamlit as st
+
 
 st.set_page_config(
     page_title='STRMная Анька',
@@ -52,6 +55,9 @@ if button:
                 prompt,
                 max_length=max_length,
             )
+
+            output = MODEL.get_last_output()
+            logging.info(f'Output: {output}')
     except Exception as err:
         st.exception(
             'OMG WHAT THE HELL IS GOING ON HERE '
