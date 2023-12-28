@@ -63,7 +63,7 @@ class AnkaModel:
 FOLDER_LENGTH = 8
 
 
-@st.cache_resource(allow_output_mutation=True, max_entries=1)
+@st.cache_resource(max_entries=1)
 def load_model(**kwargs: Any) -> AnkaModel:
     folder = 'LM_outputs'
     folder_path = Path(folder)
