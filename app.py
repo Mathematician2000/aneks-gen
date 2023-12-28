@@ -51,10 +51,12 @@ MODEL.clear_output()
 if button:
     try:
         if prompt:
-            output = MODEL.run_model(
+            MODEL.run_model(
                 prompt,
                 max_length=max_length,
             )
+
+            output = MODEL.get_last_output()
             logger = logging.getLogger(st.__name__)
             logger.info(f'Output: {output}')
     except Exception as err:
